@@ -77,8 +77,6 @@ const resetPopulation = function () {
   POPULATION_SIZE = parseInt(popSizeInput.value());
   MAX_SPEED = parseInt(maxSpeedInput.value());
   MUTATION_RATE = parseFloat(mutationInput.value());
-  SPEED_MULTIPLIER = parseInt(viewSpeedInput.value());
-
   population = new Population();
   target = createVector(CANVAS_X / 2, 50);
 
@@ -184,6 +182,7 @@ function setup() {
 }
 
 function draw() {
+  SPEED_MULTIPLIER = parseInt(viewSpeedInput.value());
   clear();
   population.run(SPEED_MULTIPLIER);
 
