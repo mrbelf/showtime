@@ -184,7 +184,11 @@ function setup() {
 function draw() {
   SPEED_MULTIPLIER = parseInt(viewSpeedInput.value());
   clear();
-  population.run(SPEED_MULTIPLIER);
+  if(LIFESPAN < SPEED_MULTIPLIER+count){
+    population.run(LIFESPAN-count);
+  }else{
+    population.run(SPEED_MULTIPLIER);
+  }
 
   // Displays count to window
   frameCountSpan.html(count);
@@ -203,7 +207,7 @@ function draw() {
     rect(beginX, beginY, endX - beginX, endY - beginY);
   }
 
-  count++;
+  count+=SPEED_MULTIPLIER;
   if (count >= LIFESPAN || population.allStoped()) {
     genCount++;
 
